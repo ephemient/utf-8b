@@ -1,0 +1,15 @@
+$dokka.format:gfm-v1
+$dokka.linkExtension:md
+$dokka.location:com.github.ephemient.utf8b.spi////PointingToDeclaration/utf-8b/com.github.ephemient.utf8b.spi/index.md
+$dokka.location:com.github.ephemient.utf8b.spi/UTF8bProvider///PointingToDeclaration/utf-8b/com.github.ephemient.utf8b.spi/-u-t-f8b-provider/index.md
+$dokka.location:com.github.ephemient.utf8b.spi/UTF8bProvider/UTF8bProvider/#/PointingToDeclaration/utf-8b/com.github.ephemient.utf8b.spi/-u-t-f8b-provider/-u-t-f8b-provider.md
+$dokka.location:com.github.ephemient.utf8b.spi/UTF8bProvider/charsetForName/#kotlin.String?/PointingToDeclaration/utf-8b/com.github.ephemient.utf8b.spi/-u-t-f8b-provider/charset-for-name.md
+$dokka.location:com.github.ephemient.utf8b.spi/UTF8bProvider/charsets/#/PointingToDeclaration/utf-8b/com.github.ephemient.utf8b.spi/-u-t-f8b-provider/charsets.md
+$dokka.location:com.github.ephemient.utf8b////PointingToDeclaration/utf-8b/com.github.ephemient.utf8b/index.md
+$dokka.location:com.github.ephemient.utf8b/UTF8b///PointingToDeclaration/utf-8b/com.github.ephemient.utf8b/-u-t-f8b/index.md
+$dokka.location:com.github.ephemient.utf8b/UTF8b/contains/#java.nio.charset.Charset?/PointingToDeclaration/utf-8b/com.github.ephemient.utf8b/-u-t-f8b/contains.md
+$dokka.location:com.github.ephemient.utf8b/UTF8b/newDecoder/#/PointingToDeclaration/utf-8b/com.github.ephemient.utf8b/-u-t-f8b/new-decoder.md
+$dokka.location:com.github.ephemient.utf8b/UTF8b/newEncoder/#/PointingToDeclaration/utf-8b/com.github.ephemient.utf8b/-u-t-f8b/new-encoder.md
+com.github.ephemient.utf8b
+com.github.ephemient.utf8b.spi
+
