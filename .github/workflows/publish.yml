@@ -1,0 +1,35 @@
+name: Publish
+
+on:
+  release:
+    types:
+    - created
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v2
+      with:
+        distribution: temurin
+        java-version: 8
+        cache: gradle
+    - id: tag
+      name: Extract tag name
+      uses: actions/github-script@v2
+      with:
+        script: |
+          const tagNS = "refs/tags/";
+          const ref = context.ref;
+          return ref && ref.startsWith(tagNS)
+            ? ref.substr(tagNS.length + (ref[tagNS.length] == "v"))
+            : '';
+        result-encoding: string
+    - name: Publish to GitHub Packages
+      run: ./gradlew --no-daemon -Pversion=${{ steps.tag.outputs.result }} publish
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}

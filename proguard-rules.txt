@@ -1,0 +1,7 @@
+-flattenpackagehierarchy com.github.ephemient.utf8b.internal
+-keep class com.github.ephemient.utf8b.UTF8b {
+    public <methods>;
+}
+-keep class com.github.ephemient.utf8b.spi.UTF8bProvider {
+    public <methods>;
+}

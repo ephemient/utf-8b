@@ -1,0 +1,34 @@
+name: Dokka
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        path: main
+    - uses: actions/checkout@v2
+      with:
+        ref: gh-docs
+        path: gh-docs
+    - uses: actions/setup-java@v2
+      with:
+        distribution: temurin
+        java-version: 8
+        cache: gradle
+    - name: Dokka
+      run: ./gradlew --no-daemon dokkaGfm
+      working-directory: main
+    - name: Copy
+      run: rsync --exclude=.git --recursive --delete --verbose main/build/dokka/gfm/ gh-docs/
+    - name: Commit
+      uses: EndBug/add-and-commit@v7
+      with:
+        cwd: gh-docs
+        branch: gh-docs
+        message: 'Dokka ${{ github.sha }}'
