@@ -11,7 +11,7 @@ All valid UTF-8 bytes should decode and and all valid Unicode strings (no unpair
 
 However, instead of [ignoring](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/CodingErrorAction.html#IGNORE--), [replacing](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/CodingErrorAction.html#REPLACE--), or [reporting](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/CodingErrorAction.html#REPORT--) invalid UTF-8 bytes, they will be instead be escaped as unpaired low surrogates on decoding, which cannot otherwise appear in UTF-8/Unicode, and subsequently unescaped on encoding.
 
-See also [PEP-383](https://www.python.org/dev/peps/pep-0383/), https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html, and https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html.
+See also [PEP-383](https://www.python.org/dev/peps/pep-0383/), [Re: UTF-16 encoding of malformed UTF-8 sequences](https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html), and [Substituting malformed UTF-8 sequences in a decoder](https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html).
 
 ## Functions
 
