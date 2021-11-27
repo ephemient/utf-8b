@@ -3,4 +3,4 @@
 # charsetForName
 
 [jvm]\
-open override fun [charsetForName](charset-for-name.md)(charsetName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?): [Charset](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html)?
+open override fun [charsetForName](charset-for-name.md)(charsetName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [Charset](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html)?

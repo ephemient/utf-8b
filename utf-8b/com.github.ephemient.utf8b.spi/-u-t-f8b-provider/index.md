@@ -11,5 +11,5 @@ class [UTF8bProvider](index.md) : [CharsetProvider](https://docs.oracle.com/java
 
 | Name | Summary |
 |---|---|
-| [charsetForName](charset-for-name.md) | [jvm]<br>open override fun [charsetForName](charset-for-name.md)(charsetName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?): [Charset](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html)? |
+| [charsetForName](charset-for-name.md) | [jvm]<br>open override fun [charsetForName](charset-for-name.md)(charsetName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [Charset](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html)? |
 | [charsets](charsets.md) | [jvm]<br>open override fun [charsets](charsets.md)(): [Iterator](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/index.html)&lt;[Charset](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html)&gt; |
