@@ -20,8 +20,8 @@ import java.nio.charset.StandardCharsets
  * surrogates on decoding, which cannot otherwise appear in UTF-8/Unicode, and subsequently unescaped on encoding.
  *
  * See also [PEP-383](https://www.python.org/dev/peps/pep-0383/),
- * [Re: UTF-16 encoding of malformed UTF-8 sequences][https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html], and
- * [Substituting malformed UTF-8 sequences in a decoder][https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html].
+ * [Re: UTF-16 encoding of malformed UTF-8 sequences](https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html), and
+ * [Substituting malformed UTF-8 sequences in a decoder](https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html).
  */
 object UTF8b : Charset("UTF-8b", arrayOf("UTF8b")) {
     override fun contains(cs: Charset?): Boolean = cs is UTF8b || StandardCharsets.UTF_8.contains(cs)
