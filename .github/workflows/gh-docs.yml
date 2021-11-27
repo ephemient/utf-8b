@@ -25,7 +25,7 @@ jobs:
       run: ./gradlew --no-daemon dokkaGfm
       working-directory: main
     - name: Copy
-      run: rsync --exclude=.git --recursive --delete --verbose main/build/dokka/gfm/ gh-docs/
+      run: rsync --exclude=.git --exclude=_config.yml --recursive --delete --verbose main/build/dokka/gfm/ gh-docs/
     - name: Commit
       uses: EndBug/add-and-commit@v7
       with:
