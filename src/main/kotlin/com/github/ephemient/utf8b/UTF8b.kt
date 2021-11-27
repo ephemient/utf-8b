@@ -55,20 +55,20 @@ object UTF8b : Charset("UTF-8b", arrayOf("UTF8b")) {
                     }
                     code = code shl 6 or b.toInt().and(0x3f)
                 }
-                when (code) {
-                    in 0xd800..0xdfff, !in when (length) {
-                        1 -> 0..0x7f
-                        2 -> 0x80..0x07ff
-                        3 -> 0x0800..0xffff
-                        4 -> 0x10000..0x10ffff
-                        else -> IntRange.EMPTY
+                when {
+                    code in 0xd800..0xdfff || when (length) {
+                        1 -> code !in 0..0x7f
+                        2 -> code !in 0x80..0x07ff
+                        3 -> code !in 0x0800..0xffff
+                        4 -> code !in 0x10000..0x10ffff
+                        else -> false
                     } -> {
                         out.put(buffer[0].toInt().and(0x7f).or(0xDC80).toChar())
                         buffer.copyInto(buffer, 0, 1, buffered--)
                         continue
                     }
-                    in 0..0xffff -> out.put(code.toChar())
-                    in 0x10000..0x10ffff -> {
+                    code in 0..0xffff -> out.put(code.toChar())
+                    code in 0x10000..0x10ffff -> {
                         if (out.remaining() < 2) return CoderResult.OVERFLOW
                         out.put(code.minus(0x10000).shr(10).and(0x03ff).or(0xd800).toChar())
                         out.put(code.minus(0x10000).and(0x03ff).or(0xdc00).toChar())

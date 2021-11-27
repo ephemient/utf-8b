@@ -17,7 +17,7 @@ class UTF8bProviderTest {
 
     companion object {
         @JvmStatic
-        fun provideCharsetNames(): Stream<String> = sequence<String> {
+        fun provideCharsetNames(): Stream<String> = sequence {
             for (u in "Uu") {
                 for (t in "Tt") {
                     for (f in "Ff") {

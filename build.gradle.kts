@@ -46,7 +46,7 @@ tasks.test {
 }
 
 val fatJar by tasks.registering(Jar::class) {
-    dependsOn(configurations.runtimeClasspath, tasks.jar)
+    inputs.files(configurations.runtimeClasspath, tasks.jar)
     archiveClassifier.set("fat")
     doFirst {
         configurations.runtimeClasspath.get().asFileTree.forEach { from(zipTree(it)) }
@@ -60,9 +60,8 @@ val fatJar by tasks.registering(Jar::class) {
 }
 
 val embeddedJar by tasks.registering(JavaExec::class) {
-    dependsOn(fatJar)
-    inputs.file("proguard-rules.txt")
-    outputs.files(layout.buildDirectory.file("libs/${project.name}-embedded.jar"))
+    inputs.files("proguard-rules.txt", fatJar)
+    outputs.files(layout.buildDirectory.file("libs/${project.name}-${project.version}-embedded.jar"))
     classpath(r8)
     mainClass.set("com.android.tools.r8.R8")
     args("--release", "--classfile")
