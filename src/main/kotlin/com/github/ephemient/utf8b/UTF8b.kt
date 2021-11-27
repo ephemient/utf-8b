@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets
  *
  * See also [PEP-383](https://www.python.org/dev/peps/pep-0383/),
  * [Re: UTF-16 encoding of malformed UTF-8 sequences](https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html), and
- * [Substituting malformed UTF-8 sequences in a decoder](https://www.unicode.org/mail-arch/unicode-ml/Archives-Old/UML019/0978.html).
+ * [Substituting malformed UTF-8 sequences in a decoder](http://hyperreal.org/~est/utf-8b/releases/utf-8b-20060413043934/kuhn-utf-8b.html).
  */
 object UTF8b : Charset("UTF-8b", arrayOf("UTF8b")) {
     override fun contains(cs: Charset?): Boolean = cs is UTF8b || StandardCharsets.UTF_8.contains(cs)
