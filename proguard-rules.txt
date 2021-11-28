@@ -1,16 +1,14 @@
 -flattenpackagehierarchy com.github.ephemient.utf8b.internal
+-keepattributes EnclosingMethod, Exceptions, InnerClasses, LineNumberTable, Signature, SourceFile
 -keepnames class com.github.ephemient.utf8b.** {
     *;
 }
 -keep class com.github.ephemient.utf8b.UTF8b {
     public static * INSTANCE;
-    public <methods>;
 }
--keep class com.github.ephemient.utf8b.spi.UTF8bProvider {
-    public <methods>;
-}
+-if class com.github.ephemient.utf8b.*
+-keep class com.github.ephemient.utf8b.spi.<1>Provider
 -assumenosideeffects class kotlin.jvm.internal.Intrinsics {
     static void checkNotNullExpressionValue(java.lang.Object, java.lang.String);
     static void checkNotNullParameter(java.lang.Object, java.lang.String);
 }
--printmapping

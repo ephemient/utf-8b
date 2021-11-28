@@ -71,10 +71,8 @@ val embeddedJar by tasks.registering(JavaExec::class) {
     argumentProviders.add { listOf(fatJar.get().archiveFile.get().asFile.toString()) }
 }
 
-val embeddedTest by tasks.registering(Test::class) {
-    classpath = files(sourceSets.test.map { it.output.classesDirs }, embeddedJar, configurations.testRuntimeClasspath)
-    inputs.files(classpath)
-    useJUnitPlatform()
+val embeddedJarTest by tasks.registering {
+    inputs.files(embeddedJar)
     doLast {
         val jar = embeddedJar.get().outputs.files.singleFile
         val badPaths = mutableListOf<String>()
@@ -86,8 +84,14 @@ val embeddedTest by tasks.registering(Test::class) {
     }
 }
 
+val embeddedTest by tasks.registering(Test::class) {
+    classpath = files(sourceSets.test.map { it.output.classesDirs }, embeddedJar, configurations.testRuntimeClasspath)
+    inputs.files(classpath)
+    useJUnitPlatform()
+}
+
 tasks.check {
-    dependsOn(embeddedTest)
+    dependsOn(embeddedJarTest, embeddedTest)
 }
 
 val javadocJar by tasks.registering(Jar::class) {
