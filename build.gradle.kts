@@ -60,6 +60,11 @@ val fatJar by tasks.registering(Jar::class) {
 }
 
 val embeddedJar by tasks.registering(JavaExec::class) {
+    javaLauncher.set(
+        javaToolchains.launcherFor {
+            languageVersion.set(JavaLanguageVersion.of(8))
+        }
+    )
     inputs.files(r8, "proguard-rules.txt", fatJar)
     outputs.files(layout.buildDirectory.file("libs/${project.name}-${project.version}-embedded.jar"))
     classpath(r8)
@@ -67,7 +72,7 @@ val embeddedJar by tasks.registering(JavaExec::class) {
     args("--release", "--classfile")
     argumentProviders.add { listOf("--output", outputs.files.singleFile.toString()) }
     argumentProviders.add { listOf("--pg-conf", file("proguard-rules.txt").toString()) }
-    argumentProviders.add { listOf("--lib", providers.systemProperty("java.home").get()) }
+    argumentProviders.add { listOf("--lib", javaLauncher.get().metadata.installationPath.toString()) }
     argumentProviders.add { listOf(fatJar.get().archiveFile.get().asFile.toString()) }
 }
 
@@ -80,7 +85,7 @@ val embeddedJarTest by tasks.registering {
             exclude("META-INF/**")
             exclude("com/github/ephemient/utf8b/**")
         }.visit { badPaths.add(path) }
-        if (badPaths.isNotEmpty()) throw GradleException("$jar contained extranous paths: $badPaths")
+        if (badPaths.isNotEmpty()) throw GradleException("$jar contained extraneous paths: $badPaths")
     }
 }
 
